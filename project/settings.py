@@ -142,6 +142,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://publicidad-4apps.vercel.app",
     "https://publicidad-frontend.vercel.app",
     "https://publicidad-g0ln011bg-lllpm12345s-projects.vercel.app",
+    "https://publicidad-kappa.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
