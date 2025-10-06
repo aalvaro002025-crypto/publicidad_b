@@ -141,6 +141,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8080",
     "https://publicidad-4apps.vercel.app",
     "https://publicidad-frontend.vercel.app",
+    "https://publicidad-g0ln011bg-lllpm12345s-projects.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
