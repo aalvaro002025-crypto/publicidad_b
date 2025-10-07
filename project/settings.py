@@ -13,10 +13,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Carga variables de entorno desde .env
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -80,22 +83,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
-# Database - PostgreSQL para producción, SQLite para desarrollo
-DATABASES = {}
-db_url = os.getenv('DATABASE_URL')
-if db_url:
-    DATABASES['default'] = dj_database_url.config(
-        default=db_url,
-        conn_max_age=600,
-        ssl_require=True
-    )
-else:
-    DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Base de datos: PostgreSQL con SSL usando variables de entorno
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_NAME", "defaultdb"),
+        "USER": os.getenv("DB_USER", "avnadmin"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT", "28617"),
+        "OPTIONS": {"sslmode": "require"}
     }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

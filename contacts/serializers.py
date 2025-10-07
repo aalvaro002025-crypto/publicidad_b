@@ -19,8 +19,12 @@ class ContactSerializer(serializers.ModelSerializer):
     def validate_company(self, value):
         # Lista de empresas válidas
         valid_companies = [
-            'Empresa A Honduras', 'Empresa B Honduras', 'Empresa C Honduras', 
-            'Empresa D Honduras', 'Empresa E Honduras', 'Empresa Nicaragua', 
+            # Honduras
+            'Empresa FinaciaPlus', 'Empresa Credifinancial', 'Empresa Banca Confiable',
+            'Empresa Inpluso Financiero', 'Empresa Finactiva',
+            # Nicaragua
+            'Empresa Nicaragua',
+            # Guatemala
             'Empresa Guatemala'
         ]
         if value and value not in valid_companies:
